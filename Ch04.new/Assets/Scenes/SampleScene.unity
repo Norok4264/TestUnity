@@ -686,8 +686,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1630, y: -820}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -159, y: -59}
+  m_SizeDelta: {x: 200, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1005464901
 MonoBehaviour:
@@ -1078,7 +1078,7 @@ GameObject:
   - component: {fileID: 1964864375}
   - component: {fileID: 1964864374}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: quitbutton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1100,8 +1100,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1232.3564, y: 689.74744}
-  m_SizeDelta: {x: -60.2487, y: 143.0229}
+  m_AnchoredPosition: {x: -260.3867, y: -25.4487}
+  m_SizeDelta: {x: -127.0219, y: 139.0951}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1964864374
 MonoBehaviour:

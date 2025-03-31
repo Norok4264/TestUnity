@@ -8,10 +8,10 @@ public class CarControl : MonoBehaviour
     public float stopSpeed = 0.02f; // ¸ØÃß´Â ±âÁØ ¼Óµµ Á¶Á¤
     public float decreaseRate = 0.095f; // °¨¼Ó·ü Áõ°¡ (´õ ºÎµå·´°Ô ¸ØÃã)
 
-    private float speed = 0;
-    private Vector2 startPos;
-    private Vector2 endPos;
-    private AudioSource audio;
+    float speed = 0;
+    Vector2 startPos;
+    Vector2 endPos;
+    AudioSource audio;
 
     void Start()
     {
@@ -30,11 +30,7 @@ public class CarControl : MonoBehaviour
             endPos = Input.mousePosition;
             float swipeLength = endPos.x - startPos.x;
             speed = swipeLength * speedRatio;
-
-            if (Mathf.Abs(speed) > stopSpeed)
-            {
-                audio.Play();
-            }
+            audio.Play();
         }
 
         transform.Translate(speed, 0, 0);

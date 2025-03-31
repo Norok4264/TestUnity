@@ -20,12 +20,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (car == null) return;
-        if (car == null) return;
-        if (car == null) return;
+        if (flag == null) return;
+        if (distance == null) return;
 
         float length = flag.transform.position.x - car.transform.position.x;
         distance.GetComponent<TextMeshProUGUI>().text
-            = "Distance : " + length.ToString("F2") + "m";
+            = "°Å¸® : " + length.ToString("F2") + "m";
 
     }
 

@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     {
         car = GameObject.Find("car");
         flag = GameObject.Find("flag");
-        distance = GameObject.Find("Distance"); // asset에 있는 구조체 이름을 가져와야 됨
+        distance = GameObject.Find("distance"); // asset에 있는 구조체 이름을 가져와야 됨
     }
 
 
@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour
         distance.GetComponent<TextMeshProUGUI>().text
             = "Distance : " + length.ToString("F2") + "m";
 
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
 

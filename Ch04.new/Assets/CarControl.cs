@@ -13,6 +13,9 @@ public class CarControl : MonoBehaviour
     Vector2 endPos;
     AudioSource audio;
 
+    bool gameEnded = false;
+    bool carStarted = false;
+
     void Start()
     {
         Application.targetFrameRate = 60;
@@ -21,6 +24,7 @@ public class CarControl : MonoBehaviour
 
     void Update()
     {
+        if (gameEnded) return;
         if (Input.GetMouseButtonDown(0))
         {
             startPos = Input.mousePosition;
@@ -31,14 +35,16 @@ public class CarControl : MonoBehaviour
             float swipeLength = endPos.x - startPos.x;
             speed = swipeLength * speedRatio;
             audio.Play();
+            carStarted = true;
         }
 
         transform.Translate(speed, 0, 0);
         speed *= decreaseRate;
 
-        if (Mathf.Abs(speed) < stopSpeed)
+        if (carStarted && speed < stopSpeed)
         {
             speed = 0f;
+            gameEnded = true;
         }
     }
 }

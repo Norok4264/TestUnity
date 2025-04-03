@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        car = GameObject.Find("car");
-        flag = GameObject.Find("flag");
-        distance = GameObject.Find("distance"); // asset에 있는 구조체 이름을 가져와야 됨
+        //car = GameObject.Find("car");
+        //flag = GameObject.Find("flag");
+        //distance = GameObject.Find("distance"); // asset에 있는 구조체 이름을 가져와야 됨
     }
 
 
@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour
 
     public void ReloadScene()
     {
-        SceneManager.loadScene("GameScene");
+        string currentScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("GameScene");
     }
 }
 

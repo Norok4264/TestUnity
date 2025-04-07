@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d7918cd39a2d7459312afa489d5afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowPrefab: {fileID: 1871913606245748079, guid: e5ef1ac7db78f43438d2d51528b50a74, type: 3}
+  arrowPrefab: {fileID: 8839914726284878151, guid: c4066e9631d97b14099651098011340d, type: 3}
   span: 0.5
 --- !u!4 &710849155
 Transform:

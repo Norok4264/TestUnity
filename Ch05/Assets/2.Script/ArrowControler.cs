@@ -7,6 +7,8 @@ public class ArrowControler : MonoBehaviour
     public float moveStep = 0.07f;
     public float r1 = 0.5f;
     public float r2 = 1.0f;
+    //public GameObject gd;
+
     GameObject player;
     
     void Start()
@@ -34,6 +36,9 @@ public class ArrowControler : MonoBehaviour
 
         if(distance < r1 + r2)
         {
+            GameObject gd = GameObject.Find("Game Director");
+            gd.GetComponent<GameDirector>().DecreaseHP();
+
             Destroy(gameObject);
         }
     }

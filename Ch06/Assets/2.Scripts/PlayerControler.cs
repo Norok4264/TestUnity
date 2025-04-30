@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControler : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class PlayerControler : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) & rigid2D.velocity.y == 0) //점프 한번만
         {
             rigid2D.AddForce(transform.up * jumpForce);
             //rigid2D.AddForce(new Vector2(0,1) * jumpForce);            
@@ -42,5 +43,16 @@ public class PlayerControler : MonoBehaviour
         }
 
         animator.speed = speedX / 2.0f;
+
+        if(transform.position.y < -10) //떨어지면 죽음
+        {
+            SceneManager.LoadScene("GameSceneMove");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.Log("Goal");
+        SceneManager.LoadScene("ClearScene");
     }
 }

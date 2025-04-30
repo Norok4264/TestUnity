@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerControler : MonoBehaviour
 {
     Rigidbody2D rigid2D;
-    Animator animator
+    Animator animator;
     public float jumpForce = 60.0f;
     public float walkForce = 100.0f;
     float maxWalkSpeed = 2.0f;

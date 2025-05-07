@@ -22,6 +22,7 @@ public class PlayerControler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) & rigid2D.velocity.y == 0) //점프 한번만
         {
+            animator.SetTrigger("JumpTrigger"); //int면 SetInt로 함
             rigid2D.AddForce(transform.up * jumpForce);
             //rigid2D.AddForce(new Vector2(0,1) * jumpForce);            
         }
@@ -42,9 +43,18 @@ public class PlayerControler : MonoBehaviour
             transform.localScale = new Vector3(key, 1, 1);
         }
 
-        animator.speed = speedX / 2.0f;
+        if(rigid2D.velocity.y == 0)
+        {
+            animator.speed = speedX / 2.0f;
+        }
+        else
+        {
+            animator.speed = 1.0f;
+        }
 
-        if(transform.position.y < -10) //떨어지면 죽음
+        //animator.speed = speedX / 2.0f;
+
+        if (transform.position.y < -10) //떨어지면 죽음
         {
             SceneManager.LoadScene("GameSceneMove");
         }
@@ -54,5 +64,20 @@ public class PlayerControler : MonoBehaviour
     {
         //Debug.Log("Goal");
         SceneManager.LoadScene("ClearScene");
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.gameObject.tag != "Cloud") return; //Cloud tag 없으면 작동 X
+
+        transform.SetParent(collision.gameObject.transform); //바닥과 충돌하면 바닥의 자식이 되기 때문에 영향을 받아 스케일이 커짐 -> tag써야함 
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag != "Cloud") return; 
+
+        transform.SetParent(null);
     }
 }

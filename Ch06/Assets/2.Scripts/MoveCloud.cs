@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class MoveCloud : MonoBehaviour
 {
-float moveSpeed = 0.05f;
-float maxWidth = 7f;
+    float avgSpeed = 0.05f;
+    float range = 0.02f;
+    float maxWidth = 7f;
 
+    float moveSpeed;
     int direction = 1;
+    
+    private void Start()
+    {
+        moveSpeed = avgSpeed;
+    }
 
     void Update()
     {
         if(transform.position.x > maxWidth)
         {
+            moveSpeed = Random.Range(avgSpeed - range, avgSpeed + range);
             direction = -1;
         }
         if(transform.position.x < -maxWidth)
         {
+            moveSpeed = Random.Range(avgSpeed - range, avgSpeed + range);
             direction = 1;
         }
 

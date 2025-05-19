@@ -12,6 +12,10 @@ public class BamsongiGenerator : MonoBehaviour
         {
             GameObject bamsongi = Instantiate(bamsongiPrefab, transform.position,
                 transform.rotation);
+
+            bamsongi.transform.position = new Vector3(transform.position.x, transform.position.y + 1,
+                transform.position.z + 1);
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Vector3 worldDor = ray.direction;
 

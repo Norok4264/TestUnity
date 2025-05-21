@@ -5,6 +5,8 @@ using UnityEngine;
 public class GenerateTarget : MonoBehaviour
 {
     public GameObject targetPrefab;
+    float minDistance = 10f;
+    Transform player;
 
     Transform[] destinations;
 
@@ -12,11 +14,24 @@ public class GenerateTarget : MonoBehaviour
     void Start()
     {
         destinations = GetComponentsInChildren<Transform>();
+        Debug.Log("Num of children: " + destinations.Length);
+        player = GameObject.Find("Player").GetComponent<Transform>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GenerateTargetObject()
     {
-        
+        int index;
+        Vector3 position;
+
+        // 적절한 위치를 찾을 때까지 반복
+        do
+        {
+            index = Random.Range(1, destinations.Length); // 부모 제외
+            position = destinations[index].position;
+        } while (Vector3.Distance(position, player.position) < minDistance);
+
+        GameObject target = Instantiate(targetPrefab, position, Quaternion.identity);
+        target.transform.SetParent(destinations[index]);
     }
 }
+

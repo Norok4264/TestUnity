@@ -5,10 +5,12 @@ using UnityEngine;
 public class TargetController : MonoBehaviour
 {
     Transform playerTR;
+    GenerateTarget gt;
 
     void Start()
     {
         playerTR = GameObject.Find("Player").transform;
+        gt = GameObject.FindAnyObjectByType<GenerateTarget>();
     }
 
     
@@ -21,5 +23,6 @@ public class TargetController : MonoBehaviour
     {
         Destroy(gameObject);
         Destroy(collision.gameObject);
+        gt.GenerateTargetObject();
     }
 }

@@ -1,10 +1,11 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*public class BamsongiGenerator : MonoBehaviour
+public class BamsongiGenerator : MonoBehaviour
 {
     public GameObject bamsongiPrefab;
+    public float throwForce = 10f;
     float power = 0f;
     float startVal = 0f;
 
@@ -15,9 +16,12 @@ using UnityEngine;
             startVal = Input.mouseposition.y;
         }
 
-        if (input.
-            //GameObject bamsongi = Instantiate(bamsongiPrefab, transform.position,
-                //transform.rotation);
+        if (Input.GetMouseButtonUp(0))
+        {
+            power = Input.mousePosition.y - startVal;
+        }
+            GameObject bamsongi = Instantiate(bamsongiPrefab, transform.position,
+                transform.rotation);
 
             // bamsongi.transform.position = new Vector3(transform.position.x, transform.position.y + 1,
             //     transform.position.z + 1);
@@ -31,35 +35,43 @@ using UnityEngine;
             //bamsongi.GetComponent<BamsongiController>().Shoot(new Vector3(0, 200, 2000));
             //bamsongi.GetComponent<BamsongiController>().Shoot(worldDor * 2000);
             bamsongi.GetComponent<BamsongiController>().
-                Shoot((transform.forward + transform.up  0.5).normalized * power); ;
+                Shoot((transform.forward + transform.up  0.5).normalized * power * throwForce); ;
         }
-    }
+}
 }*/
 
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class BamsongiGenerator : MonoBehaviour
 {
     public GameObject bamsongiPrefab;
-    private float startVal;
-    public float power = 2000f;
+    public float throwForce = 10f;
+
+    private float power = 0f;
+    private float startVal = 0f;
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            startVal = Input.mousePosition.y;
+            startVal = Input.mousePosition.y;  // 오타 수정 (mouseposition → mousePosition)
         }
 
         if (Input.GetMouseButtonUp(0))
         {
+            power = Input.mousePosition.y - startVal;
+
             // 밤송이 생성
             GameObject bamsongi = Instantiate(bamsongiPrefab, transform.position + transform.forward, transform.rotation);
 
-            // 방향 계산: 전방 + 위 방향
-            Vector3 shootDir = (transform.forward + transform.up).normalized;
+            // 발사 방향: 앞 + 위 (조절값 포함)
+            Vector3 direction = (transform.forward + transform.up * 0.5f).normalized;
 
-            // 발사
-            bamsongi.GetComponent<BamsongiController>().Shoot(shootDir * power);
+            // Shoot 함수 호출 (방향 * 힘)
+            bamsongi.GetComponent<BamsongiController>().Shoot(direction * power * throwForce);
         }
     }
 }

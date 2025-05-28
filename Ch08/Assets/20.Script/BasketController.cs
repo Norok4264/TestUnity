@@ -8,6 +8,8 @@ public class NewBehaviourScript : MonoBehaviour
     public AudioClip appleSE;
     public AudioClip bombSE;
 
+    GameObject manager;
+
     AudioSource aud;
 
     // Start is called before the first frame update
@@ -15,6 +17,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         aud = GetComponent<AudioSource>();
+        manager = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
@@ -44,11 +47,13 @@ public class NewBehaviourScript : MonoBehaviour
         if(other.gameObject.tag == "Apple")
         {
             //Debug.Log("사과를 잡았다.");
+            manager.GetComponent<GameManager>().GetApple();
             aud.PlayOneShot(appleSE);
         }
         else if(other.gameObject.tag == "Bomb")
         {
             //Debug.Log("폭탄을 잡았다.");
+            manager.GetComponent<GameManager>().GetBomb();
             aud.PlayOneShot(bombSE);
         }
 

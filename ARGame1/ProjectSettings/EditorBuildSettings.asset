@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/10 Scenes/Main.unity
     guid: a1627d43146edb648997025ee527ce9d
+  - enabled: 1
+    path: Assets/10 Scenes/Draw Spheres.unity
+    guid: e1ed6cd74e44ea24bb4f569a83ceb453
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: c388c1eb0ec17dc4ca3f212c49dca9e7, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: a5d0ad6505d3a414ca94c8f2ef8cce8e, type: 2}

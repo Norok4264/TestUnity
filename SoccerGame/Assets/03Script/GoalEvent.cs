@@ -30,7 +30,7 @@ public class GoalEvent : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < -5f)
+        if (transform.position.y < -5f) // 경기장 밖으로 공 떨어지면 위치 리셋
         {
             ResetBall();
         }
@@ -38,24 +38,24 @@ public class GoalEvent : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("BlueGoal"))
+        if (other.CompareTag("BlueGoal")) // 블루 득점
         {
             blueScore++;
-            blueScoreText.text = blueScore.ToString();  // 숫자만 출력
+            blueScoreText.text = blueScore.ToString();  
             ResetBall();
         }
-        else if (other.CompareTag("RedGoal"))
+        else if (other.CompareTag("RedGoal")) // 레드 득점
         {
             redScore++;
-            redScoreText.text = redScore.ToString();    // 숫자만 출력
+            redScoreText.text = redScore.ToString();    
             ResetBall();
         }
     }
 
     void ResetBall()
     {
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        transform.SetPositionAndRotation(initialPosition.position, initialPosition.rotation);
+        rb.velocity = Vector3.zero; // 속도 초기화
+        rb.angularVelocity = Vector3.zero; // 회전 초기화
+        transform.SetPositionAndRotation(initialPosition.position, initialPosition.rotation); // 초기위치로
     }
 }

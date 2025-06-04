@@ -9,19 +9,19 @@ public class GameManager : MonoBehaviour
     public GoalEvent goalEventScript; // SoccerBall에 붙어있는 GoalEvent 스크립트 연결
 
     private int timeRemaining = 30;
-    private bool isGameOver = false;
+    private bool isGameOver = false; // EndGame 중복 방지
 
     void Start()
     {
         StartCoroutine(TimerCountdown());
     }
 
-    IEnumerator TimerCountdown()
+    IEnumerator TimerCountdown() // 코루틴함수
     {
         while (timeRemaining > 0)
         {
             timerText.text = timeRemaining.ToString();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1f); // 1초마다 실행
             timeRemaining--;
         }
 
